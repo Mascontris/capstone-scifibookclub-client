@@ -1,0 +1,11 @@
+.label {
+    color: #D1E8E2;
+}
+
+.RegistrationForm {
+    border: 2px, solid, #D1E8E2;
+    background-color: rgb(57, 110, 190, .8);
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+}

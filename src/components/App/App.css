@@ -1,0 +1,30 @@
+.pallet {
+    color:#2C3531;
+    color:#396EBE;
+    color:#D9B08C;
+    color:#FFCB9A;
+    color:#D1E8E2;
+    }
+
+* { padding: 0; margin: 0; }
+
+.App {
+    background-image: url('../../img/background.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+}
+
+.App__main {
+    
+}
+
+.top__margin {
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+}
