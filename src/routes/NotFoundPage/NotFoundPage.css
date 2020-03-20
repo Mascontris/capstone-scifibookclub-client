@@ -1,11 +1,10 @@
-.label {
+.NotFoundPage {
+    margin-top: 60px;
     color: #D1E8E2;
-}
-
-.RegistrationForm {
     border: 1px solid #2C3531;
     background-color: rgb(57, 110, 190, .8);
     padding: 10px;
     border-radius: 5px;
     margin: 20px;
+    margin-top: 60px;
 }

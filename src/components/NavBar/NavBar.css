@@ -46,9 +46,15 @@ body {
     color: #D1E8E2;
 }
 
-a:hover, .fas:hover {
+a:hover, .fa-bars:hover {
     background-color: #D1E8E2;
     color: #2C3531;
+}
+
+.fa-bars:hover .bar1, 
+.fa-bars:hover .bar2, 
+.fa-bars:hover .bar3 {
+    background-color: #2C3531;
 }
 
 .main-nav {

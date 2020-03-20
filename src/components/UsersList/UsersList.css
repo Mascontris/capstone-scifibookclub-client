@@ -1,11 +1,12 @@
-.label {
-    color: #D1E8E2;
-}
-
-.RegistrationForm {
+.users__container {
     border: 1px solid #2C3531;
     background-color: rgb(57, 110, 190, .8);
     padding: 10px;
     border-radius: 5px;
     margin: 20px;
+    margin-top: 60px;
+}
+
+.user__link a{
+    color: #FFCB9A
 }

@@ -10,7 +10,7 @@ export default class LandingPage extends Component {
 
   render() {
     return (
-      <div className="top__margin landing__page">
+      <div className="landing__page">
         <section className="text">
           <section>
             <header>

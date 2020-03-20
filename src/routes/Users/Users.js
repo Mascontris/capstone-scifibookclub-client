@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-//import LoginForm from '../../components/LoginForm/LoginForm'
 import { Section } from '../../components/Utils/Utils'
+import UsersList from '../../components/UsersList/UsersList'
 
 export default class Users extends Component {
   static defaultProps = {
@@ -18,8 +18,8 @@ export default class Users extends Component {
 
   render() {
     return (
-      <Section className='BooksPage'>
-        <h2>Users Page</h2>
+      <Section className='UsersPage'>
+        <UsersList></UsersList>
       </Section>
     )
   }

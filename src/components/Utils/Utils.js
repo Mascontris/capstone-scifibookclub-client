@@ -44,3 +44,17 @@ export function Section({ className, list, ...props }) {
     <section className={classes} {...props} />
   )
 }
+
+function myFunction(x) {
+  x.classList.toggle("change");
+}
+
+export function Hamburger({ className, ...props }) {
+  return (
+    <div className={['hamburger__container', className].join(' ')} {...props}>
+      <div className="bar1"></div>
+      <div className="bar2"></div>
+      <div className="bar3"></div>
+    </div>
+  )
+}

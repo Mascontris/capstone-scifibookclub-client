@@ -1,14 +1,17 @@
 .landing__page {
-    border: 2px, solid, #D1E8E2;
+    border: 1px solid #2C3531;
     background-color: rgb(57, 110, 190, .8);
     padding: 10px;
     border-radius: 5px;
     margin: 20px;
+    margin-top: 70px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .text {
     color: #D1E8E2;
-    margin-top: 30px;
 }
 
 header {
