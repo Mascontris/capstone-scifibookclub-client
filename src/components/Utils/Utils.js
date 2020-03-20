@@ -45,10 +45,6 @@ export function Section({ className, list, ...props }) {
   )
 }
 
-function myFunction(x) {
-  x.classList.toggle("change");
-}
-
 export function Hamburger({ className, ...props }) {
   return (
     <div className={['hamburger__container', className].join(' ')} {...props}>
