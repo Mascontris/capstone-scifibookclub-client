@@ -35,35 +35,24 @@ export default class UserBooks extends Component {
       <div className="top__margin slide-container">
         <Slide {...properties}>
           <div className="each-slide">
-            <div
-              className="cover-image"
-              style={{ backgroundImage: `url(${slideImages[0]})` }}
-            >
-              {/* <span></span> */}
-            </div>
+            <p>
+              <img src={slideImages[0]} className="cover-image"></img>
+            <p className="label description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
             <p className="label text">Author</p>
-            <br></br>
-            <p className="label description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <div></div>
+          </p>
           </div>
 
           <div className="each-slide">
-            <div
-              className="cover-image"
-              style={{ backgroundImage: `url(${slideImages[1]})` }}
-            >
-              {/* <span>Slide 2</span> */}
-            </div>
-            <p className="label">Author</p>
-            <br></br>
+            <p>
+              <img src={slideImages[1]} className="cover-image"></img>
             <p className="label description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -73,18 +62,13 @@ export default class UserBooks extends Component {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
-            <div></div>
+            <p className="label text">Author</p>
+          </p>
           </div>
 
           <div className="each-slide">
-            <div
-              className="cover-image"
-              style={{ backgroundImage: `url(${slideImages[2]})` }}
-            >
-              {/* <span>Slide 3</span> */}
-            </div>
-            <p className="label">Author</p>
-            <br></br>
+            <p>
+              <img src={slideImages[2]} className="cover-image"></img>
             <p className="label description">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -94,7 +78,8 @@ export default class UserBooks extends Component {
               nulla pariatur. Excepteur sint occaecat cupidatat non proident,
               sunt in culpa qui officia deserunt mollit anim id est laborum.
             </p>
-            <div></div>
+            <p className="label text">Author</p>
+          </p>
           </div>
         </Slide>
       </div>

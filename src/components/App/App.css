@@ -1,30 +1,28 @@
 .pallet {
-    color:#2C3531;
-    color:#396EBE;
-    color:#D9B08C;
-    color:#FFCB9A;
-    color:#D1E8E2;
-    }
+  color: #2c3531;
+  color: #396ebe;
+  color: #d9b08c;
+  color: #ffcb9a;
+  color: #d1e8e2;
+}
 
-* { padding: 0; margin: 0; }
+* {
+  /* box-sizing: border-box; */
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
 
 .App {
-    background-image: url('../../img/background.jpg');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
 }
 
 .App__main {
-    
 }
 
 .top__margin {
-    margin-top: 30px;
+  /* margin-top: 30px; */
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }

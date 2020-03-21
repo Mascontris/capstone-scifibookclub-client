@@ -88,6 +88,7 @@ export default class NavBar extends Component {
     }
 
     return (
+      <div className='container'>
 <nav className="navbar">
         <span className="navbar-toggle" id="js-navbar-toggle" onClick={() => {
                 mainNav.classList.toggle('active')
@@ -112,6 +113,7 @@ export default class NavBar extends Component {
             
         </ul>
     </nav>
+    </div>
     )
   }
 }
