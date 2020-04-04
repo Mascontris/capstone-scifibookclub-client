@@ -1,21 +1,62 @@
 import React, { Component } from "react";
+import { Button } from '../Utils/Utils'
 import { Slide } from "react-slideshow-image";
-//import './Bookshelf.css'
+import AppliationContext from "../Context/ApplicationContext";
 import "./UserBooks.css";
+import AuthApiService from "../../services/auth-api-service";
 
 export default class UserBooks extends Component {
-  static defaultProps = {
-    history: {
-      push: () => {}
+  static contextType = AppliationContext;
+
+  state = {
+    userBooks: [],
+  };
+
+  componentDidMount() {
+    const { user_id } = this.context;
+    AuthApiService.getBookshelf(user_id).then(this.setUserBooksList);
+  }
+
+  removeBook = (bookId) => {
+    console.log('button clicked', bookId)
+    AuthApiService.deleteBook(this.context.user_id, bookId);
+  };
+
+  setUserBooksList = userBooks => {
+    this.setState({ userBooks });
+    if (this.state.userBooks.length === 0) {
+      this.context.history.push("/books");
     }
   };
 
+  renderRemoveButton = (bookId) => {
+    return (
+      <Button
+        type="submit"
+        onClick={() => {
+          this.removeBook(bookId);
+        }}
+      >
+        Remove book
+      </Button>
+    );
+  };
+
+  renderSlide() {
+    return this.state.userBooks.map((book, index) => (
+      <div className="each-slide" key={index}>
+        <p>{this.renderRemoveButton(book.id)}</p>
+        <img alt="book cover" key={index} src={book.cover_url} className="cover-image"></img>
+        <p className="label title">{book.title}</p>
+        <p className="label description">{book.description}</p>
+        <p className="label text">{book.author}</p>
+      </div>
+    ));
+  }
+
   render() {
-    const slideImages = [
-      "https://images.squarespace-cdn.com/content/v1/513a230ae4b0f3422dd7d5ad/1548698797451-FX2DF66T2741LATEGU6L/ke17ZwdGBToddI8pDm48kJme_vyRngthM-lqQfhlIH1Zw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVHdR4tGE0fFJHT7ppaMbI8l68Pv4V3IjdRIUtf6KN3cEolyXOhr1HlgtlqrKgcoGR0/premade-space-sci-fi-e-book-covers-for-indie-authors.jpg",
-      "https://www.goodcoverdesign.co.uk/wp-content/uploads/2013/08/MindSpace-email7c.jpg",
-      "https://artfulcover.com/wp-content/uploads/2018/08/Artful-Cover_premade_120238162_Elemental-Mode_800x1200.jpg"
-    ];
+    // eslint-disable-next-line
+    const slideImages = this.state.userBooks.map(book => book.cover_url);
 
     const properties = {
       duration: 1000000,
@@ -25,65 +66,15 @@ export default class UserBooks extends Component {
       arrows: true,
       pauseOnHover: true,
       autoplay: false,
-      onChange: (oldIndex, newIndex) => {
-        console.log(`slide transition from ${oldIndex} to ${newIndex}`);
-      }
+      // onChange: (oldIndex, newIndex) => {
+      //   console.log(`slide transition from ${oldIndex} to ${newIndex}`);
+      // }
     };
 
-    //const Slideshow = () => {
     return (
       <div className="top__margin slide-container">
-        <Slide {...properties}>
-          <div className="each-slide">
-            <p>
-              <img src={slideImages[0]} className="cover-image"></img>
-            <p className="label description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p className="label text">Author</p>
-          </p>
-          </div>
-
-          <div className="each-slide">
-            <p>
-              <img src={slideImages[1]} className="cover-image"></img>
-            <p className="label description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p className="label text">Author</p>
-          </p>
-          </div>
-
-          <div className="each-slide">
-            <p>
-              <img src={slideImages[2]} className="cover-image"></img>
-            <p className="label description">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <p className="label text">Author</p>
-          </p>
-          </div>
-        </Slide>
+        <Slide {...properties}>{this.renderSlide()}</Slide>
       </div>
     );
   }
 }
-//}

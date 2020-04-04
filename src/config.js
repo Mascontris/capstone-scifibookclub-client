@@ -1,4 +1,7 @@
-
-//export default 'http://localhost:8000/'
-//export default 'https://capstone-merits.herokuapp.com/'
-export let googleApi = 'https://www.googleapis.com/books/v1/volumes?q=subject:"science fiction"&country=US&maxResults=5&startIndex='
+export default {
+    API_ENDPOINT: 'http://localhost:8000/',
+    LOCAL_ENDPOINT: 'http://localhost:3000/',
+    //API_ENDPOINT: 'https://capstone-scifibookclub.herokuapp.com/'
+    GOOGLE_API: 'https://www.googleapis.com/books/v1/volumes?q=subject:"science fiction"&country=US&maxResults=5&startIndex=',
+    TOKEN_KEY: 'capstone-client-auth-token'
+  }

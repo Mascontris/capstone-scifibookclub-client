@@ -1,119 +1,118 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Hyph, Hamburger } from '../Utils/Utils'
-//import TokenService from '../../services/token-service'
-//import IdleService from '../../services/idle-service'
-import './NavBar.css'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Hyph, Hamburger } from "../Utils/Utils";
+import TokenService from '../../services/token-service'
+import "./NavBar.css";
+import ApplicationContext from "../Context/ApplicationContext";
 
 export default class NavBar extends Component {
-//   handleLogoutClick = () => {
-//     TokenService.clearAuthToken()
-//     /* when logging out, clear the callbacks to the refresh api and idle auto logout */
-//     TokenService.clearCallbackBeforeExpiry()
-//     IdleService.unRegisterIdleResets()
-//   }
+    
+  static contextType = ApplicationContext;
 
+  handleLogoutClick = () => {
+      TokenService.clearAuthToken()
+      localStorage.removeItem('user_id')
+    }
 
   renderLogoutLink() {
     return (
-      <div className="nav-links">
-        <Link
-          onClick={this.handleLogoutClick}
-          to='/'>
-          Logout
-        </Link>
-      </div>
-    )
-  }
-
-  renderLoginLink() {
-    return (
       <li className="nav-links">
-        <Link
-          to='/register'>
-          Register
-        </Link>
-        <Hyph />
-        <Link
-          to='/login'>
-          Log in
+        <Link onClick={this.handleLogoutClick} 
+          to="/">
+          Logout
         </Link>
       </li>
     )
   }
 
+  renderLoginLink() {
+    return (
+    <li className='nav-links'>
+      <Link 
+        to="/register">
+          Register
+      </Link>
+      <Hyph />
+      <Link 
+      to="/login">
+        Log in
+      </Link>
+    </li>
+    )}
+
   renderBooks() {
     return (
-        <li className="nav-links">
-            <Link
-              to='/books'>
-                 Books
-              </Link>
-        </li>
-    )
-}
+      <li className="nav-links">
+        <Link to="/books">Books</Link>
+      </li>
+    );
+  }
 
   renderMyBookshelf() {
-      return (
-          <li className="nav-links">
-              <Link
-                to='/bookshelf'>
-                    My Bookshelf
-                </Link>
-          </li>
-      )
+    return (
+      <li className="nav-links">
+        <Link to="/bookshelf">My Bookshelf</Link>
+      </li>
+    );
   }
 
   renderUsersPage() {
     return (
-        <li className="nav-links">
-            <Link
-              to='/Users'>
-                 User's List
-              </Link>
-        </li>
-    )
-}
-
-
+      <li className="nav-links">
+        <Link to="/Users">User's List</Link>
+      </li>
+    );
+  }
 
   render() {
-    
-    let mainNav = document.getElementById('js-menu');
-    let bars = document.getElementById('fa-bars')
+    let mainNav = document.getElementById("js-menu");
+    let bars = document.getElementById("fa-bars");
 
     function toggleHamburger(x) {
       x.classList.toggle("change");
     }
 
     return (
-      <div className='container'>
-<nav className="navbar">
-        <span className="navbar-toggle" id="js-navbar-toggle" onClick={() => {
-                mainNav.classList.toggle('active')
-                toggleHamburger(bars)
-              }}>
-            <Hamburger id='fa-bars' className='fa-bars'></Hamburger>
-        </span>
-        <Link to='/' className="logo">
-          SciFi Bookclub
-        </Link>
-        <ul className="main-nav" id="js-menu" onClick={() => {
-                mainNav.classList.toggle('active')
-                toggleHamburger(bars)
-              }}>         
-          {this.renderLoginLink()}
-            {/* {TokenService.hasAuthToken()
+      <div className="container">
+        <nav className="navbar">
+          <span
+            className="navbar-toggle"
+            id="js-navbar-toggle"
+            onClick={() => {
+              mainNav.classList.toggle("active");
+              toggleHamburger(bars);
+            }}
+          >
+            <Hamburger id="fa-bars" className="fa-bars"></Hamburger>
+          </span>
+          <Link to="/" className="logo">
+            SciFi Bookclub
+          </Link>
+          <ul
+            className="main-nav"
+            id="js-menu"
+            onClick={() => {
+              mainNav.classList.toggle("active");
+              toggleHamburger(bars);
+            }}
+          >
+            {TokenService.hasAuthToken()
             ? this.renderLogoutLink()
-            : this.renderLoginLink()} */}
-          {this.renderBooks()}
-          {this.renderMyBookshelf()}
-          {this.renderUsersPage()}
+            : this.renderLoginLink()}
+
+            {this.renderBooks()}
+
+            {TokenService.hasAuthToken()
+            ? this.renderMyBookshelf()
+            : ""}
             
-        </ul>
-    </nav>
-    </div>
-    )
+            {TokenService.hasAuthToken()
+            ? this.renderUsersPage()
+            : ""}
+
+          </ul>
+        </nav>
+      </div>
+    );
   }
 }

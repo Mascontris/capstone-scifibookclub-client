@@ -19,6 +19,7 @@
     padding: 10px;
     border-radius: 5px;
     margin-top: 20px;
+    height: 100%;
   }
 
   .cover-image {
@@ -27,7 +28,7 @@
     max-width: 200px;
     height: auto;
     float: left;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .description {
@@ -62,4 +63,36 @@
     align-items: center;
     margin: 0;
     background: #adceed;
+  }
+
+  .react-slideshow-container {
+    align-items: initial;
+    
+  }
+
+  .nav {
+    margin-top: 30px;
+  }
+
+  .Button {
+    margin-left: 25%;
+    background-color: rgb(57, 110, 190, .8);
+    cursor: pointer;
+    /* top: 100%; */
+    width: auto;
+    padding: 16px;
+    color: #D1E8E2;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    user-select: none;
+    outline: none;
+  }
+
+  .Button:hover {
+    background-color:rgb(44, 53, 49, .8);
+  }
+
+  .title {
+    font-size: 2em;
   }

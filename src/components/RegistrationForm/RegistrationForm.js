@@ -1,40 +1,58 @@
 import React, { Component } from 'react'
 import { Button, Input, Required } from '../Utils/Utils'
-//import AuthApiService from '../../services/auth-api-service'
+import AuthApiService from '../../services/auth-api-service'
+import ApplicationContext from '../Context/ApplicationContext'
 import './RegistrationForm.css'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
-    onRegistrationSuccess: () => {}
+
   }
 
-  state = { error: null }
+  static contextType = ApplicationContext
 
-  // handleSubmit = ev => {
-  //   ev.preventDefault()
-  //   const { full_name, nick_name, user_name, password } = ev.target
+  state = { 
+    error: null,
+    full_name: "",
+    user_name: "",
+    password: ""
+  }
 
-  //   this.setState({ error: null })
-  //   AuthApiService.postUser({
-  //     user_name: user_name.value,
-  //     password: password.value,
-  //     full_name: full_name.value,
-  //     nickname: nick_name.value,
-  //   })
-  //     .then(user => {
-  //       full_name.value = ''
-  //       nick_name.value = ''
-  //       user_name.value = ''
-  //       password.value = ''
-  //       this.props.onRegistrationSuccess()
-  //     })
-  //     .catch(res => {
-  //       this.setState({ error: res.error })
-  //     })
-  // }
+  handleChange = ev => {
+    this.setState({[ev.target.name]: ev.target.value})
+  }
+
+  handleSubmit = ev => {
+    ev.preventDefault()
+    const { full_name, user_name, password } = this.state;
+    const registeredUser = { full_name, user_name, password }
+    this.setState({ error: null })
+
+    AuthApiService.postUser({
+      full_name: full_name,
+      user_name: user_name,
+      password: password
+    })
+      .then(user => {
+        // set state to reset the values including error
+        console.log(user)
+        this.setState({
+          full_name: "",
+          user_name:"",
+          password:"",
+          error: null
+        })
+        registeredUser.user_id = user.id;
+        this.context.handleRegistrationSuccess(registeredUser)
+      })
+      .catch(res => {
+        this.setState({ error: res.error })
+      })
+  }
 
   render() {
-    const { error } = this.state
+    const { error, full_name, user_name, password } = this.state
+
     return (
       <form
         className='top__margin RegistrationForm'
@@ -50,6 +68,8 @@ export default class RegistrationForm extends Component {
           <Input
             name='full_name'
             type='text'
+            value={full_name}
+            onChange={this.handleChange}
             required
             id='RegistrationForm__full_name'>
           </Input>
@@ -61,6 +81,8 @@ export default class RegistrationForm extends Component {
           <Input
             name='user_name'
             type='text'
+            value={user_name}
+            onChange={this.handleChange}
             required
             id='RegistrationForm__user_name'>
           </Input>
@@ -72,6 +94,8 @@ export default class RegistrationForm extends Component {
           <Input
             name='password'
             type='password'
+            value={password}
+            onChange={this.handleChange}
             required
             id='RegistrationForm__password'>
           </Input>
