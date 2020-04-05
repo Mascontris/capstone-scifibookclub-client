@@ -44,7 +44,7 @@ class App extends Component {
   }
 
   fetchBooks = val => {
-    if (this.state.startIndex === 0 && val === -4) {
+    if (this.state.startIndex === 0 && val === -5) {
     } else {
       this.setState({ startIndex: this.state.startIndex + val }, () => {
         fetch(`${config.GOOGLE_API}${this.state.startIndex}`)

@@ -38,7 +38,7 @@ export default class Books extends Component {
           <button
             className="prev"
             onClick={() => {
-              this.context.fetchBooks(-4);
+              this.context.fetchBooks(-5);
               this.updatePageNumber(-1)
             }}
           >
@@ -47,7 +47,7 @@ export default class Books extends Component {
           <button
             className="next"
             onClick={() => {
-              this.context.fetchBooks(4);
+              this.context.fetchBooks(5);
               this.updatePageNumber(1)
             }}
           >

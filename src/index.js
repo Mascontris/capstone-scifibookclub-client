@@ -1,4 +1,5 @@
 import React from 'react'
+import 'core-js'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 //import 'typeface-roboto'
