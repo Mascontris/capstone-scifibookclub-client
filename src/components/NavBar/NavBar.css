@@ -41,7 +41,7 @@ body {
     color: #D1E8E2;
 }
 
-a:hover, .fa-bars:hover {
+a:hover, .fa-bars:hover, .logo:hover{
     background-color: #D1E8E2;
     color: #2C3531;
 }
