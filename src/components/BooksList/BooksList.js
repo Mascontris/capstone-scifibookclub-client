@@ -11,10 +11,47 @@ export default class BooksList extends Component {
 
   static contextType = ApplicationContext;
 
-  state = { error: null };
+  state = { 
+    error: null,
+    bookshelfTitles: [] };
+
+  componentDidMount() {
+    AuthApiService.getBookshelf(this.context.user_id).then(this.setBookshelf)
+  }
+
+  renderButton = (index, bookData) => {
+    if(this.state.bookshelfTitles.includes(bookData.title)) {
+      return (
+        <Button
+            type="submit"
+          >
+            Already in bookshelf
+          </Button>
+
+      )
+    } else { return (
+      <Button
+            type="submit"
+            onClick={() => {
+              this.addToBookshelf(index, bookData)
+              window.location.reload(false)
+            }}
+          >
+            Add to bookshelf
+          </Button>
+    )}
+    
+  }
+
+  setBookshelf = bookshelf => {
+    this.setState({
+      bookshelfTitles: bookshelf.map(book => {return book.title})
+    })
+  }
 
   addToBookshelf = (e, bookData) => {
     AuthApiService.postBook(this.context.user_id, bookData);
+    this.renderButton(e, bookData)
   };
 
   render() {
@@ -33,14 +70,7 @@ export default class BooksList extends Component {
           return <Button type="submit" onClick={() => {this.context.history.push('/login')}}>Login to add book</Button>;
         }
         return (
-          <Button
-            type="submit"
-            onClick={() => {
-              this.addToBookshelf(index, bookData);
-            }}
-          >
-            Add to bookshelf
-          </Button>
+          this.renderButton(index, bookData)
         );
       };
 

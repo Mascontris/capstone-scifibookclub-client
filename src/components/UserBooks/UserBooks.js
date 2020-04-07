@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from '../Utils/Utils'
+import { Button } from "../Utils/Utils";
 import { Slide } from "react-slideshow-image";
 import AppliationContext from "../Context/ApplicationContext";
 import "./UserBooks.css";
@@ -18,11 +18,11 @@ export default class UserBooks extends Component {
   }
 
   removeBook = (bookId) => {
-    console.log('button clicked', bookId)
+    console.log("button clicked", bookId);
     AuthApiService.deleteBook(this.context.user_id, bookId);
   };
 
-  setUserBooksList = userBooks => {
+  setUserBooksList = (userBooks) => {
     this.setState({ userBooks });
     if (this.state.userBooks.length === 0) {
       this.context.history.push("/books");
@@ -33,6 +33,7 @@ export default class UserBooks extends Component {
     return (
       <Button
         type="submit"
+        className="removeButton"
         onClick={() => {
           this.removeBook(bookId);
         }}
@@ -44,19 +45,26 @@ export default class UserBooks extends Component {
 
   renderSlide() {
     return this.state.userBooks.map((book, index) => (
-      <div className="each-slide" key={index}>
-        <p>{this.renderRemoveButton(book.id)}</p>
-        <img alt="book cover" key={index} src={book.cover_url} className="cover-image"></img>
-        <p className="label title">{book.title}</p>
-        <p className="label description">{book.description}</p>
-        <p className="label text">{book.author}</p>
+      <div>
+        <span>{this.renderRemoveButton(book.id)}</span>
+        <div className="each-slide" key={index}>
+          <img
+            alt="book cover"
+            key={index}
+            src={book.cover_url}
+            className="cover-image"
+          ></img>
+          <p className="label title">{book.title}</p>
+          <p className="label description">{book.description}</p>
+          <p className="label text">{book.author}</p>
+        </div>
       </div>
     ));
   }
 
   render() {
     // eslint-disable-next-line
-    const slideImages = this.state.userBooks.map(book => book.cover_url);
+    const slideImages = this.state.userBooks.map((book) => book.cover_url);
 
     const properties = {
       duration: 1000000,
@@ -66,9 +74,6 @@ export default class UserBooks extends Component {
       arrows: true,
       pauseOnHover: true,
       autoplay: false,
-      // onChange: (oldIndex, newIndex) => {
-      //   console.log(`slide transition from ${oldIndex} to ${newIndex}`);
-      // }
     };
 
     return (

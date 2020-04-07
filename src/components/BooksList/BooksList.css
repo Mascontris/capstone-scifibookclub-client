@@ -1,12 +1,11 @@
-.books__list {
-   
-}
-
 .books__section {
     display: flex;
     flex-direction: column;
     background-color: rgb(209, 232, 226, 0.4);
     padding: 10px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .cover {
@@ -38,6 +37,9 @@
     background-color: rgb(57, 110, 190, .8);
     padding: 10px;
     border-radius: 5px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navigation {
@@ -52,13 +54,11 @@
 }
 
 .prev, .next {
-    background-color: rgb(57, 110, 190, .8);
+    background-color: rgb(57, 110, 190, 1);
     cursor: pointer;
-    position: absolute;
-    /* top: 100%; */
+    position: fixed;
     width: auto;
     padding: 16px;
-    margin-top: 40px;
     color: #D1E8E2;
     font-weight: bold;
     font-size: 18px;
@@ -69,12 +69,12 @@
   
   /* Position the "next button" to the right */
   .next {
-    right: 40px;
+    right: 15%;
     border-radius: 0 5px 5px 0px;
   }
   
   .prev {
-    left: 40px;
+    left: 15%;
     border-radius: 5px 0 0 5px;
   }
   
