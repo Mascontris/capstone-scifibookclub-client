@@ -2,7 +2,7 @@
 ### Link to the App hosted on Zeit.co
 [https://capstone-scifibookclub-client.mascontris.now.sh/](https://capstone-scifibookclub-client.mascontris.now.sh/ "SciFi Bookclub App")
 
-<img src="Screen Shot.png" height="30%" width="30%"/>
+<img src="ScreenShot.png" height="30%" width="30%"/>
 
 ## Browse a selection of science fiction books hosted on Google Books API.
 see a list of the top science fiction books by popular authors.
